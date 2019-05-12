@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./docker/web
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./build:/srv/www
+  make:
+    build:
+      context: .
+    volumes:
+      - ./src:/src/src
+      - ./build:/src/build
