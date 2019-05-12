@@ -30,8 +30,3 @@
 *.exe
 *.out
 *.app
-
-# Web Assets
-build/*.js
-build/*.html
-build/*.wasm
