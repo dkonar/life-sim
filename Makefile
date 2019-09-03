@@ -1,10 +1,11 @@
-src = $(wildcard src/*.cpp)
 CXX = em++
 BUILD_DIR ?= ./build
-CXXFLAGS = -s BINARYEN_TRAP_MODE=clamp -s USE_SDL=2
-all: src/main.cpp src/board.cpp src/board.cpp
-	  $(MKDIR_P) $(BUILD_DIR)
-		$(CXX) $(src) ${CXXFLAGS} -o ${BUILD_DIR}/hello.html
+CXXFLAGS = -s BINARYEN_TRAP_MODE=clamp -s USE_SDL=2 -s ERROR_ON_UNDEFINED_SYMBOLS=0
+all: main
+
+main:
+		$(MKDIR_P) $(BUILD_DIR)
+		$(CXX) -o ${BUILD_DIR}/hello.html src/main.cpp src/board.cpp src/lifeform.cpp src/colors.cpp ${CXXFLAGS}
 
 .PHONY: watch clean
 

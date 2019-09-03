@@ -2,16 +2,7 @@
 #define BOARD_H
 #include <SDL2/SDL.h>
 #include "board.h"
-#include <array>
-#include <emscripten.h>
-class Lifeform
-{
-	SDL_Color color;
-	public:
-		Lifeform();
-		SDL_Color getColor() const;
-		void fade(char r, char g, char b);
-};
+#include "lifeform.h"
 
 class Board
 {
@@ -20,6 +11,7 @@ class Board
 	static const int WIDTH;
 	static const int ROW_SIZE;
 	static const int BOX_COUNT;
+	static const int ROW_COUNT;
 	SDL_Renderer *renderer;
 	SDL_Window *window;
 	SDL_Rect rect;
@@ -27,6 +19,8 @@ class Board
 	void drawBox(int x, int y, SDL_Color color);
 	void update();
 	void seed();
+	int getUp(int i);
+	int getDown(int i);
   public:
 		Board();
 		Lifeform *grid[600];
